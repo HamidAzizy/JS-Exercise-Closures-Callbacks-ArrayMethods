@@ -31,7 +31,7 @@ function processFirstItem(stringList, callback) {
 /**
  * ### Challenge `processLength`
  * 
- * @instructions
+ * @instructions  // Done
  * PLEASE STUDY THE EXAMPLE CHALLENGE THOROUGHLY BEFORE PROCEEDING!
  * PLEASE STUDY THE EXAMPLE CHALLENGE THOROUGHLY BEFORE PROCEEDING!
  * 
@@ -48,11 +48,18 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
+function processLength(list, callback) {
+
+   return callback(list.length);
   /* CODE HERE */
 }
-
-/**
+// function showLength(array, callback) {
+//   callback(array.length);
+// }
+// showLength(elements, (length) => {
+//   alert(length);
+// });
+/********
  * ### Challenge `processLastItem`
  * 
  * @instructions
@@ -66,14 +73,17 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
+function processLastItem(stringList, callback) {
+// for(let i=0; i < stringList.length; i++)
+
+  return callback(stringList(stringList.length -1));
   /* CODE HERE */
 }
 
 /**
  * ### Challenge `processSum`
  * 
- * @instructions
+ * @instructions  //Done
  * Implement a higher-order function called `processSum`.
  * It takes two arguments:
  * @param numberList array of numbers.
@@ -87,14 +97,20 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
+function processSum(numberList, callback) {
+  let sum = 0
+  for(let i=0; i < numberList.length; i++){
+  sum += numberList[i];
+  }
+  return callback(sum)
+
   /* CODE HERE */
 }
 
 /**
  * ### Challenge `processProduct`
  * 
- * @instructions
+ * @instructions  // Done
  * Implement a higher-order function called `processProduct`.
  * It takes three arguments:
  * @param num1 a number.
@@ -109,14 +125,15 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
+function processProduct(num1, num2, callback) {
+  return callback(num1 * num2)
   /* CODE HERE */
 }
 
 /**
  * ### Challenge `processContains`
  * 
- * @instructions
+ * @instructions //Done
  * Implement a higher-order function called `processContains`.
  * It takes three arguments:
  * @param item of any kind.
@@ -133,7 +150,9 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
+function processContains(item, list, callback) {
+
+   callback(list.includes(item))
   /* CODE HERE */
 }
 
@@ -247,10 +266,18 @@ function tallyUpDonations(/* CODE HERE */) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
+  
   function counter() {
-    ++count
-  }
+    let count = 0;
+    return function(){
+    return ++count;
+    }
+    };
+    const newCounter = counter();
+    console.log(newCounter());
+    console.log(newCounter());
+    console.log(newCounter());
+
   // BROKEN CODE ENDS
 }
 
